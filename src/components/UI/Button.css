@@ -1,0 +1,17 @@
+.btn {
+  color: white;
+  font-size: 24px;
+  background-color: black;
+}
+
+.danger {
+  background-color: red;
+}
+
+.success {
+  background-color: green;
+}
+
+.warning {
+  background-color: orange;
+}
