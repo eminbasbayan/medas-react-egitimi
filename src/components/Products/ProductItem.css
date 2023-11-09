@@ -1,0 +1,12 @@
+.product-item {
+  border: 1px solid red;
+}
+
+.product-image {
+  width: 200px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
