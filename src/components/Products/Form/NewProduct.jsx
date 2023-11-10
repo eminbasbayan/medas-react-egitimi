@@ -1,11 +1,13 @@
 import { useState } from "react";
 
-function NewProduct() {
-  const [productData, setProductData] = useState({
-    productTitle: "",
-    productPrice: "",
-    imageUrl: "",
-  });
+const initialValues = {
+  productTitle: "",
+  productPrice: "",
+  imageUrl: "",
+};
+
+function NewProduct({ addNewProduct }) {
+  const [productData, setProductData] = useState(initialValues);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -17,7 +19,9 @@ function NewProduct() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(productData);
+    const newProduct = productData;
+    addNewProduct(newProduct);
+    setProductData(initialValues);
   }
 
   return (
@@ -30,6 +34,7 @@ function NewProduct() {
           className="border-[1px] border-solid border-[black] p-2 rounded-md"
           name="productTitle"
           onChange={handleChange}
+          value={productData.productTitle}
         />
       </div>
       <div className="product-form-input inline-flex flex-col">
@@ -40,6 +45,7 @@ function NewProduct() {
           className="border-[1px] border-solid border-[black] p-2 rounded-md"
           name="productPrice"
           onChange={handleChange}
+          value={productData.productPrice}
         />
       </div>
       <div className="product-form-input inline-flex flex-col">
@@ -50,6 +56,7 @@ function NewProduct() {
           className="border-[1px] border-solid border-[black] p-2 rounded-md"
           name="imageUrl"
           onChange={handleChange}
+          value={productData.imageUrl}
         />
       </div>
       <button className="bg-green-600 text-white w-20 rounded-md">Ekle</button>

@@ -2,12 +2,19 @@ import ProductItem from "./ProductItem";
 import { productData } from "../../productData";
 import "./Products.css";
 import NewProduct from "./Form/NewProduct";
+import { useState } from "react";
 function Products() {
+  const [products, setProducts] = useState(productData);
+
+  function addNewProduct(newProduct) {
+    setProducts([...products, { id: products.length + 1, ...newProduct }]);
+  }
+
   return (
     <div className="products flex flex-col">
-      <NewProduct />
+      <NewProduct addNewProduct={addNewProduct} />
       <div className="products-wrapper flex gap-4 mt-4">
-        {productData.map((product) => (
+        {products.map((product) => (
           <ProductItem
             imageUrl={product.imageUrl}
             productTitle={product.productTitle}
