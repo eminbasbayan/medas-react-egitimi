@@ -1,36 +1,17 @@
 import { useState } from "react";
 
 function NewProduct() {
-  //   const [productTitle, setProductTitle] = useState("");
-  //   const [productPrice, setProductPrice] = useState("");
-  //   const [imageUrl, setImageUrl] = useState("");
   const [productData, setProductData] = useState({
     productTitle: "",
     productPrice: "",
     imageUrl: "",
   });
 
-  function handleTitleChange(event) {
-    // setProductTitle(event.target.value);
+  function handleChange(event) {
+    const { name, value } = event.target;
     setProductData({
       ...productData,
-      productTitle: event.target.value,
-    });
-  }
-
-  function handlePriceChange(event) {
-    // setProductPrice(event.target.value);
-    setProductData({
-      ...productData,
-      productPrice: event.target.value,
-    });
-  }
-
-  function handleUrlChange(event) {
-    // setImageUrl(event.target.value);
-    setProductData({
-      ...productData,
-      imageUrl: event.target.value,
+      [name]: value,
     });
   }
 
@@ -38,8 +19,6 @@ function NewProduct() {
     event.preventDefault();
     console.log(productData);
   }
-
-  console.log("rendered");
 
   return (
     <form className="product-form mt-4 flex gap-x-2" onSubmit={handleSubmit}>
@@ -49,7 +28,8 @@ function NewProduct() {
           type="text"
           placeholder="Ürün adı giriniz..."
           className="border-[1px] border-solid border-[black] p-2 rounded-md"
-          onChange={handleTitleChange}
+          name="productTitle"
+          onChange={handleChange}
         />
       </div>
       <div className="product-form-input inline-flex flex-col">
@@ -58,7 +38,8 @@ function NewProduct() {
           type="text"
           placeholder="Ürün fiyatı giriniz..."
           className="border-[1px] border-solid border-[black] p-2 rounded-md"
-          onChange={handlePriceChange}
+          name="productPrice"
+          onChange={handleChange}
         />
       </div>
       <div className="product-form-input inline-flex flex-col">
@@ -67,7 +48,8 @@ function NewProduct() {
           type="text"
           placeholder="Ürün url giriniz..."
           className="border-[1px] border-solid border-[black] p-2 rounded-md"
-          onChange={handleUrlChange}
+          name="imageUrl"
+          onChange={handleChange}
         />
       </div>
       <button className="bg-green-600 text-white w-20 rounded-md">Ekle</button>
