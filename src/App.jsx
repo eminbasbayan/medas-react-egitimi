@@ -1,10 +1,10 @@
 import { Fragment } from "react";
-import Counter from "./components/Counter";
+import Products from "./components/Products/Products";
 
 function App() {
   return (
     <Fragment>
-      <Counter />
+      <Products />
     </Fragment>
   );
 }
