@@ -1,26 +1,45 @@
 import { useState } from "react";
 
 function NewProduct() {
-  const [productTitle, setProductTitle] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  //   const [productTitle, setProductTitle] = useState("");
+  //   const [productPrice, setProductPrice] = useState("");
+  //   const [imageUrl, setImageUrl] = useState("");
+  const [productData, setProductData] = useState({
+    productTitle: "",
+    productPrice: "",
+    imageUrl: "",
+  });
 
   function handleTitleChange(event) {
-    setProductTitle(event.target.value);
+    // setProductTitle(event.target.value);
+    setProductData({
+      ...productData,
+      productTitle: event.target.value,
+    });
   }
 
   function handlePriceChange(event) {
-    setProductPrice(event.target.value);
+    // setProductPrice(event.target.value);
+    setProductData({
+      ...productData,
+      productPrice: event.target.value,
+    });
   }
 
   function handleUrlChange(event) {
-    setImageUrl(event.target.value);
+    // setImageUrl(event.target.value);
+    setProductData({
+      ...productData,
+      imageUrl: event.target.value,
+    });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log({ productTitle, productPrice, imageUrl });
+    console.log(productData);
   }
+
+  console.log("rendered");
 
   return (
     <form className="product-form mt-4 flex gap-x-2" onSubmit={handleSubmit}>
