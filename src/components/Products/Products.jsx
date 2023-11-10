@@ -12,7 +12,7 @@ function Products() {
 
   return (
     <div className="products flex flex-col">
-      <NewProduct addNewProduct={addNewProduct} />
+      <NewProduct addNewProduct={addNewProduct} setProducts={setProducts} />
       <div className="products-wrapper flex gap-4 mt-4">
         {products.map((product) => (
           <ProductItem

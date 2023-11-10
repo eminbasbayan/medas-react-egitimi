@@ -7,7 +7,7 @@ const initialValues = {
   imageUrl: "",
 };
 
-function NewProduct({ addNewProduct }) {
+function NewProduct({ addNewProduct, setProducts }) {
   const [productData, setProductData] = useState(initialValues);
   const [showModal, setShowModal] = useState(false);
 
@@ -30,8 +30,12 @@ function NewProduct({ addNewProduct }) {
       return;
     }
     const newProduct = productData;
-    addNewProduct(newProduct);
+    // addNewProduct(newProduct);
     setProductData(initialValues);
+    setProducts((prevState) => [
+      ...prevState,
+      { id: prevState.length + 1, ...newProduct },
+    ]);
   }
 
   return (
