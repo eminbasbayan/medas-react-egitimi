@@ -4,10 +4,10 @@ import Button from "./components/UI/Button";
 
 function App() {
   return (
-    <Fragment>
+    <div className="container mx-auto">
       <Products />
       <Button title="Ekle" addClass="success" />
-    </Fragment>
+    </div>
   );
 }
 
