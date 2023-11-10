@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "../../UI/Modal";
 
 const initialValues = {
   productTitle: "",
@@ -8,6 +9,7 @@ const initialValues = {
 
 function NewProduct({ addNewProduct }) {
   const [productData, setProductData] = useState(initialValues);
+  const [showModal, setShowModal] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -19,6 +21,14 @@ function NewProduct({ addNewProduct }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (
+      productData.productTitle.length === 0 ||
+      productData.productPrice.length === 0 ||
+      productData.imageUrl.length === 0
+    ) {
+      setShowModal(true);
+      return;
+    }
     const newProduct = productData;
     addNewProduct(newProduct);
     setProductData(initialValues);
@@ -60,6 +70,7 @@ function NewProduct({ addNewProduct }) {
         />
       </div>
       <button className="bg-green-600 text-white w-20 rounded-md">Ekle</button>
+      {showModal && <Modal setShowModal={setShowModal} />}
     </form>
   );
 }
