@@ -1,84 +1,27 @@
 import { Fragment } from "react";
 import React from "react";
-import { Button, Checkbox, Form, Input } from "antd";
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
+import Products from "./components/Products/Products";
+import Button from "./components/UI/Button";
 
 function App() {
-  const formRef = React.useRef(null);
+  function handleClick() {
+    console.log("run");
+  }
+
   return (
     <Fragment>
-      <h1>Hello, world!</h1>
-      <Form
-        name="basic"
-        labelCol={{
-          span: 8,
+      <Products />
+      {/* <Button title="Düzenle" addClass="danger"  /> */}
+      <button onClick={handleClick}>Ekle</button>
+      <button onClick={() => console.log("run")}>Ekle</button>
+      <button
+        onClick={() => {
+          console.log("run");
         }}
-        wrapperCol={{
-          span: 16,
-        }}
-        style={{
-          maxWidth: 600,
-        }}
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
       >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item
-          name="remember"
-          valuePropName="checked"
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+        Ekle
+      </button>
+      <button onClick={()=> handleClick(5)}>Parametre Gönderme</button>
     </Fragment>
   );
 }
