@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CartContext } from "../../context/CartContext";
 import { ThemeContext } from "../../context/ThemeContext";
@@ -10,6 +10,11 @@ function Header() {
   function handleThemeMode() {
     setThemeMode((themeMode) => (themeMode === "Dark" ? "Light" : "Dark"));
   }
+
+  useEffect(() => {
+    localStorage.setItem("themeMode", JSON.stringify(themeMode));
+  }, [themeMode]);
+
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
