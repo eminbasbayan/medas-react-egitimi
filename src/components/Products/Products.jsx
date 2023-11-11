@@ -5,6 +5,7 @@ import NewProduct from "./Form/NewProduct";
 import { useEffect, useState } from "react";
 function Products() {
   const [products, setProducts] = useState(productData);
+  const [isLoading, setIsLoading] = useState(false);
 
   function addNewProduct(newProduct) {
     const newId = products[products.length - 1].id + 1;
@@ -12,6 +13,7 @@ function Products() {
   }
 
   function fetchProductsData() {
+    setIsLoading(true);
     fetch("https://fakestoreapi.com/products")
       .then((response) => {
         return response.json();
@@ -32,7 +34,7 @@ function Products() {
         setProducts(newProducts);
       })
       .catch((err) => console.log(err))
-      .finally(() => console.log("işlem tamamlandı"));
+      .finally(() => setIsLoading(false));
   }
 
   useEffect(() => {
@@ -43,17 +45,19 @@ function Products() {
     <div className="products flex flex-col">
       <NewProduct addNewProduct={addNewProduct} setProducts={setProducts} />
       <button onClick={fetchProductsData}>Ürünleri Getir</button>
+      {isLoading && <span>Loading...</span>}
       <div className="products-wrapper gap-4 mt-4">
-        {products.map((product) => (
-          <ProductItem
-            product={product}
-            imageUrl={product.imageUrl}
-            productTitle={product.productTitle}
-            productPrice={product.productPrice}
-            setProducts={setProducts}
-            key={product.id}
-          />
-        ))}
+        {!isLoading &&
+          products.map((product) => (
+            <ProductItem
+              product={product}
+              imageUrl={product.imageUrl}
+              productTitle={product.productTitle}
+              productPrice={product.productPrice}
+              setProducts={setProducts}
+              key={product.id}
+            />
+          ))}
       </div>
     </div>
   );
