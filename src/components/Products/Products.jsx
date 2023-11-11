@@ -11,31 +11,6 @@ function Products() {
     setProducts([...products, { id: newId, ...newProduct }]);
   }
 
-  // function fetchProductsData() {
-  //   setIsLoading(true);
-  //   fetch("https://fakestoreapi.com/products")
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((products) => {
-  //       const newProducts = products.map(
-  //         ({ id, category, title, price, image }) => {
-  //           const newItem = {
-  //             id: id,
-  //             category: category,
-  //             productTitle: title,
-  //             productPrice: price,
-  //             imageUrl: image,
-  //           };
-  //           return newItem;
-  //         }
-  //       );
-  //       setProducts(newProducts);
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => setIsLoading(false));
-  // }
-
   async function fetchProductsData() {
     setIsLoading(true);
     try {
@@ -68,8 +43,9 @@ function Products() {
 
   return (
     <div className="products flex flex-col">
-      <NewProduct addNewProduct={addNewProduct} setProducts={setProducts} />
-      <button onClick={fetchProductsData}>Ürünleri Getir</button>
+      {/* <NewProduct addNewProduct={addNewProduct} setProducts={setProducts} /> */}
+      {/* <button onClick={fetchProductsData}>Ürünleri Getir</button> */}
+      <h1 className="text-center text-3xl">Ürün Listesi</h1>
       {isLoading && <span>Loading...</span>}
       <div className="products-wrapper gap-4 mt-4">
         {!isLoading &&
