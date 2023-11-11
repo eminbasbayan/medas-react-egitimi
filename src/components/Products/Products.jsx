@@ -1,10 +1,9 @@
 import ProductItem from "./ProductItem";
-import { productData } from "../../productData";
 import "./Products.css";
 import NewProduct from "./Form/NewProduct";
 import { useEffect, useState } from "react";
 function Products() {
-  const [products, setProducts] = useState(productData);
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   function addNewProduct(newProduct) {
@@ -12,29 +11,55 @@ function Products() {
     setProducts([...products, { id: newId, ...newProduct }]);
   }
 
-  function fetchProductsData() {
+  // function fetchProductsData() {
+  //   setIsLoading(true);
+  //   fetch("https://fakestoreapi.com/products")
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((products) => {
+  //       const newProducts = products.map(
+  //         ({ id, category, title, price, image }) => {
+  //           const newItem = {
+  //             id: id,
+  //             category: category,
+  //             productTitle: title,
+  //             productPrice: price,
+  //             imageUrl: image,
+  //           };
+  //           return newItem;
+  //         }
+  //       );
+  //       setProducts(newProducts);
+  //     })
+  //     .catch((err) => console.log(err))
+  //     .finally(() => setIsLoading(false));
+  // }
+
+  async function fetchProductsData() {
     setIsLoading(true);
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => {
-        return response.json();
-      })
-      .then((products) => {
-        const newProducts = products.map(
-          ({ id, category, title, price, image }) => {
-            const newItem = {
-              id: id,
-              category: category,
-              productTitle: title,
-              productPrice: price,
-              imageUrl: image,
-            };
-            return newItem;
-          }
-        );
-        setProducts(newProducts);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false));
+    try {
+      const response = await fetch("https://fakestoreapi.com/products");
+      const products = await response.json();
+      const newProducts = products.map(
+        ({ id, category, title, price, image }) => {
+          const newItem = {
+            id: id,
+            category: category,
+            productTitle: title,
+            productPrice: price,
+            imageUrl: image,
+          };
+          return newItem;
+        }
+      );
+      setProducts(newProducts);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log("işlem bitti.");
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
