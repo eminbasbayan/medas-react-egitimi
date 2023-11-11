@@ -9,8 +9,12 @@ function Modal({ setShowModal }) {
   }, []);
 
   return (
-    <div className=" absolute w-[100%] h-[100%] flex justify-center items-center top-0 ">
-      <div className="modal-wrapper bg-gray-200 p-10 relative z-50">
+    <div className=" absolute w-[100%] h-[100%] flex justify-center items-center top-0 left-0">
+      <div
+        className="absolute bg-red-300 opacity-40 w-[100%] h-[100%]"
+        onClick={() => setShowModal(false)}
+      ></div>
+      <div className="modal-wrapper bg-gray-200 p-10 z-50">
         <h3>Inputlar boş olamaz</h3>
         <p>Lütfen tüm inputların dolu olduğundan emin olalım.</p>
         <button
