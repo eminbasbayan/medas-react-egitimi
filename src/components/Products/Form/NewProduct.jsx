@@ -32,10 +32,14 @@ function NewProduct({ addNewProduct, setProducts }) {
     const newProduct = productData;
     // addNewProduct(newProduct);
     setProductData(initialValues);
-    setProducts((prevState) => [
-      ...prevState,
-      { id: prevState.length + 1, ...newProduct },
-    ]);
+
+    setProducts((prevProducts) => {
+      const newId =
+        prevProducts.length === 0
+          ? 1
+          : prevProducts[prevProducts.length - 1].id + 1;
+      return [...prevProducts, { id: newId, ...newProduct }];
+    });
   }
 
   return (
