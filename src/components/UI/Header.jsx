@@ -1,6 +1,15 @@
+import { useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { CartContext } from "../../context/CartContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
-function Header(props) {
+function Header() {
+  const { cart } = useContext(CartContext);
+  const { themeMode, setThemeMode } = useContext(ThemeContext);
+
+  function handleThemeMode() {
+    setThemeMode((themeMode) => (themeMode === "Dark" ? "Light" : "Dark"));
+  }
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -16,8 +25,13 @@ function Header(props) {
             </span>
           </a>
           <div className="flex items-center lg:order-2">
-            <AiOutlineShoppingCart />
-            <strong>{props.cart.length}</strong>
+            <div className="flex items-center mr-2">
+              <AiOutlineShoppingCart />
+              <strong>{cart.length}</strong>
+            </div>
+            <button onClick={handleThemeMode} className="text-black">
+              {themeMode}
+            </button>
           </div>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"

@@ -1,0 +1,19 @@
+import { createContext, useState } from "react";
+
+export const ThemeContext = createContext();
+
+function ThemeProvider(props) {
+  const [themeMode, setThemeMode] = useState("Light");
+  return (
+    <ThemeContext.Provider
+      value={{
+        themeMode,
+        setThemeMode,
+      }}
+    >
+      {props.children}
+    </ThemeContext.Provider>
+  );
+}
+
+export default ThemeProvider;

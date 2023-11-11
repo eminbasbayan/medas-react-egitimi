@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Products from "./components/Products/Products";
 import Header from "./components/UI/Header";
+import { ThemeContext } from "./context/ThemeContext";
 
 function App() {
-  const [cart, setCart] = useState([]);
-  
+  const { themeMode } = useContext(ThemeContext);
   return (
-    <div className="container mx-auto">
-      <Header cart={cart} />
-      <Products setCart={setCart} />
+    <div
+      className={`container mx-auto ${
+        themeMode === "Dark" && "bg-black text-white"
+      } `}
+    >
+      <Header />
+      <Products />
     </div>
   );
 }

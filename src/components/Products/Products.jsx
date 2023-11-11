@@ -1,15 +1,10 @@
 import ProductItem from "./ProductItem";
 import "./Products.css";
-import NewProduct from "./Form/NewProduct";
+
 import { useEffect, useState } from "react";
-function Products(props) {
+function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  function addNewProduct(newProduct) {
-    const newId = products[products.length - 1].id + 1;
-    setProducts([...products, { id: newId, ...newProduct }]);
-  }
 
   async function fetchProductsData() {
     setIsLoading(true);
@@ -57,7 +52,6 @@ function Products(props) {
               productPrice={product.productPrice}
               setProducts={setProducts}
               key={product.id}
-              setCart={props.setCart}
             />
           ))}
       </div>

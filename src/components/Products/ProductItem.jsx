@@ -3,8 +3,7 @@ import "./ProductItem.css";
 import { CartContext } from "../../context/CartContext";
 
 function ProductItem(props) {
-  const data = useContext(CartContext);
-  console.log(data);
+  const { setCart } = useContext(CartContext);
   const {
     imageUrl,
     productTitle,
@@ -12,7 +11,6 @@ function ProductItem(props) {
     setProducts,
     product: { id },
     product,
-    setCart,
   } = props;
 
   function handleDelete() {
