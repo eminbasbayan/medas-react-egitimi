@@ -1,6 +1,6 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-function Header() {
+function Header(props) {
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -17,7 +17,7 @@ function Header() {
           </a>
           <div className="flex items-center lg:order-2">
             <AiOutlineShoppingCart />
-            <strong>0</strong>
+            <strong>{props.cart.length}</strong>
           </div>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"

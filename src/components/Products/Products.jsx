@@ -2,7 +2,7 @@ import ProductItem from "./ProductItem";
 import "./Products.css";
 import NewProduct from "./Form/NewProduct";
 import { useEffect, useState } from "react";
-function Products() {
+function Products(props) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -57,6 +57,7 @@ function Products() {
               productPrice={product.productPrice}
               setProducts={setProducts}
               key={product.id}
+              setCart={props.setCart}
             />
           ))}
       </div>

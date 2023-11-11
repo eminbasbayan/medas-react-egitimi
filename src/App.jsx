@@ -3,10 +3,12 @@ import Products from "./components/Products/Products";
 import Header from "./components/UI/Header";
 
 function App() {
+  const [cart, setCart] = useState([]);
+  
   return (
     <div className="container mx-auto">
-      <Header />
-      <Products />
+      <Header cart={cart} />
+      <Products setCart={setCart} />
     </div>
   );
 }
