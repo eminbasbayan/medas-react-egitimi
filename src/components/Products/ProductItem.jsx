@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import "./ProductItem.css";
+import { CartContext } from "../../context/CartContext";
 
 function ProductItem(props) {
-
+  const data = useContext(CartContext);
+  console.log(data);
   const {
     imageUrl,
     productTitle,
@@ -9,7 +12,7 @@ function ProductItem(props) {
     setProducts,
     product: { id },
     product,
-    setCart
+    setCart,
   } = props;
 
   function handleDelete() {
