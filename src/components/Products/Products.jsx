@@ -2,7 +2,7 @@ import ProductItem from "./ProductItem";
 import { productData } from "../../productData";
 import "./Products.css";
 import NewProduct from "./Form/NewProduct";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function Products() {
   const [products, setProducts] = useState(productData);
 
@@ -35,11 +35,15 @@ function Products() {
       .finally(() => console.log("işlem tamamlandı"));
   }
 
+  useEffect(() => {
+    fetchProductsData();
+  }, []);
+
   return (
     <div className="products flex flex-col">
       <NewProduct addNewProduct={addNewProduct} setProducts={setProducts} />
       <button onClick={fetchProductsData}>Ürünleri Getir</button>
-      <div className="products-wrapper flex gap-4 mt-4">
+      <div className="products-wrapper gap-4 mt-4">
         {products.map((product) => (
           <ProductItem
             product={product}

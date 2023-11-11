@@ -10,10 +10,11 @@ function ProductItem(props) {
   } = props;
 
   function handleDelete() {
-    console.log(id);
-    setProducts((prevProducts) => {
-      return prevProducts.filter((item) => item.id !== id);
-    });
+    if (window.confirm("Silmek istediğinizden emin misiniz?")) {
+      setProducts((prevProducts) => {
+        return prevProducts.filter((item) => item.id !== id);
+      });
+    }
   }
 
   return (

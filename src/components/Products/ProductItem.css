@@ -1,12 +1,19 @@
 .product-item {
   border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .product-image {
   width: 200px;
+  height: 200px;
+  object-fit: contain;
 }
 
 .product-info {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
