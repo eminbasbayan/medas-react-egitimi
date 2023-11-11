@@ -11,9 +11,34 @@ function Products() {
     setProducts([...products, { id: newId, ...newProduct }]);
   }
 
+  function fetchProductsData() {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => {
+        return response.json();
+      })
+      .then((products) => {
+        const newProducts = products.map(
+          ({ id, category, title, price, image }) => {
+            const newItem = {
+              id: id,
+              category: category,
+              productTitle: title,
+              productPrice: price,
+              imageUrl: image,
+            };
+            return newItem;
+          }
+        );
+        setProducts(newProducts);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => console.log("işlem tamamlandı"));
+  }
+
   return (
     <div className="products flex flex-col">
       <NewProduct addNewProduct={addNewProduct} setProducts={setProducts} />
+      <button onClick={fetchProductsData}>Ürünleri Getir</button>
       <div className="products-wrapper flex gap-4 mt-4">
         {products.map((product) => (
           <ProductItem
