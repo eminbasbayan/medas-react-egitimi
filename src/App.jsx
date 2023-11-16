@@ -7,6 +7,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <HomePage />,
   },
+  {
+    path: "/products",
+    element: <ProductsPage />,
+  },
 ]);
 
 function App() {
