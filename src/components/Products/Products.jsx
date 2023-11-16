@@ -7,9 +7,7 @@ const Products = () => {
 
   async function fetchProducts() {
     try {
-      const response = await axios.get(
-        "https://my-pos-application-api.onrender.com/api/products/get-all"
-      );
+      const response = await axios.get("https://fakestoreapi.com/products");
       if (response.status === 200) {
         const data = response.data;
         setProducts(data);
@@ -28,7 +26,7 @@ const Products = () => {
   return (
     <div className="products flex gap-4 flex-wrap">
       {products.map((product) => (
-        <ProductItem product={product} key={product._id} />
+        <ProductItem product={product} key={product.id} />
       ))}
     </div>
   );

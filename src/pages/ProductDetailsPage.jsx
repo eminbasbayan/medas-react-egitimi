@@ -1,25 +1,23 @@
-import { Link } from "react-router-dom";
+import React from "react";
 
-const ProductItem = (props) => {
-  const { id, title, price, category, image: imageUrl } = props.product;
-
+const ProductDetailsPage = () => {
   return (
     <div className="w-72 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img
           className="p-8 rounded-t-lg h-72"
-          src={imageUrl}
+          src={"imageUrl"}
           alt="product image"
         />
       </a>
       <div className="px-5 pb-5">
-        <Link to={`${id}`}>
+        <a href="#">
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            {title}
+            {"title"}
           </h5>
-        </Link>
+        </a>
         <span className="bg-red-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ">
-          {category}
+          {"category"}
         </span>
         <div className="flex items-center mt-2.5 mb-5">
           <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -75,7 +73,7 @@ const ProductItem = (props) => {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
-            ₺{price}
+            ₺{"price"}
           </span>
           <a
             href="#"
@@ -89,4 +87,4 @@ const ProductItem = (props) => {
   );
 };
 
-export default ProductItem;
+export default ProductDetailsPage;
