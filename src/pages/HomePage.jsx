@@ -1,3 +1,4 @@
+import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import { Link } from "react-router-dom";
 function HomePage() {
@@ -10,6 +11,7 @@ function HomePage() {
         <br />
         <Link to={"/products"}>Go to Products Page</Link>
       </div>
+      <Footer />
     </>
   );
 }
