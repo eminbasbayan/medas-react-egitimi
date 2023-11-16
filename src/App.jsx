@@ -23,13 +23,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/admin/products",
-  //   element: <AdminLayout />,
-  //   children:[
-  //     {path: "/admin", element: <AdminPage />}
-  //   ]
-  // }
 ]);
 
 function App() {
