@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { counterActions } from "../store";
 
 function Counter() {
-  const counter = useSelector((state) => state.counter);
-  const showCounter = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const showCounter = useSelector((state) => state.counter.showCounter);
   const { increment, decrement, increase, toggleCounter } = counterActions;
   const dispatch = useDispatch();
 
