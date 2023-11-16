@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Counter from "../components/Counter";
 import { useDispatch } from "react-redux";
-import { authActions } from "../store";
+import { authActions } from "../store/auth";
 function HomePage() {
   const dispatch = useDispatch();
   const { login, logout } = authActions;
