@@ -5,37 +5,29 @@ import { useEffect, useState } from "react";
 import { fetchPosts } from "../store/postSlice";
 import ForwardCounter from "../components/ForwardCounter";
 import BackwardCounter from "../components/BackwardCounter";
+import useHttp from "../hooks/use-http";
 function HomePage() {
-  const [counter, setCounter] = useState(0);
+  const { isLoading, error, sendRequest } = useHttp();
+  const [posts, setPosts] = useState([]);
   const dispatch = useDispatch();
   const postStatus = useSelector((state) => state.posts.status);
-  const items = useSelector((state) => state.posts.items);
-  const error = useSelector((state) => state.posts.error);
   const { login } = authActions;
+
+  useEffect(() => {
+    const applyData = (data) => {
+      setPosts(data);
+    };
+    sendRequest(
+      { url: "https://jsonplaceholder.typicode.com/posts" },
+      applyData
+    );
+  }, [sendRequest]);
+
+  console.log(posts);
 
   function handleLogin() {
     dispatch(login());
   }
-
-  useEffect(() => {
-    if (postStatus === "start") {
-      dispatch(fetchPosts());
-    }
-  }, [dispatch, postStatus]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter((prevCounter) => prevCounter + 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    setInterval(() => {
-      setCounter((prevCounter) => prevCounter - 1);
-    }, 1000);
-  }, []);
 
   return (
     <>
