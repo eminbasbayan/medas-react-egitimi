@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
-const Products = () => {
+const Products = (props) => {
   const [products, setProducts] = useState([]);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   async function fetchProducts() {
     try {
@@ -25,9 +27,17 @@ const Products = () => {
 
   return (
     <div className="products flex gap-4 flex-wrap">
-      {products.map((product) => (
-        <ProductItem product={product} key={product.id} />
-      ))}
+      {!props.cart &&
+        products.map((product) => (
+          <ProductItem product={product} key={product.id} />
+        ))}
+      {props.cart && cartItems.length === 0 ? (
+        <h3 className="text-2xl font-bold">Sepette hiç ürün yok</h3>
+      ) : (
+        cartItems.map((item) => (
+          <ProductItem product={item} key={item.id} cart={props.cart} />
+        ))
+      )}
     </div>
   );
 };

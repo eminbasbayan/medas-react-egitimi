@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Counter from "../components/Counter";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store/authSlice";
