@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
-import { addProduct, removeProduct } from "../../store/cartSlice";
+import {
+  addProduct,
+  removeProduct,
+  increase,
+  decrease,
+} from "../../store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductItem = (props) => {
@@ -99,10 +104,33 @@ const ProductItem = (props) => {
               </button>
               <br />
               <div className="flex items-center mt-2">
-                <button className="p-3 bg-green-400">+</button>
-                <b className="mx-2">0</b>
-                <button className="p-3 bg-red-500 text-white text-xl">-</button>
+                <button
+                  className="p-3 bg-green-400"
+                  onClick={() => dispatch(increase({ id }))}
+                >
+                  +
+                </button>
+                <b className="mx-2">{findProduct.quantity}</b>
+                <button
+                  className="p-3 bg-red-500 text-white text-xl"
+                  onClick={() => {
+                    if (findProduct.quantity === 1) {
+                      if (
+                        window.confirm(
+                          "Ürünü silmek istediğinizden emin misiniz?"
+                        )
+                      ) {
+                        dispatch(decrease({ id }));
+                      }
+                      return;
+                    }
+                    dispatch(decrease({ id }));
+                  }}
+                >
+                  -
+                </button>
               </div>
+              <span>x {findProduct.quantity}</span>
             </div>
           ) : (
             <button

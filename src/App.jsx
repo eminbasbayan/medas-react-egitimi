@@ -5,8 +5,14 @@ import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import CartPage from "./pages/CartPage";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
   return (
     <BrowserRouter>
       <Routes>
