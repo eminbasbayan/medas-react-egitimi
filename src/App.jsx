@@ -7,6 +7,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import CartPage from "./pages/CartPage";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/products/:productId" element={<ProductDetailsPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
