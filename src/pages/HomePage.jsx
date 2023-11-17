@@ -35,8 +35,6 @@ function HomePage() {
       <button onClick={handleLogin}>Giriş Yap</button>
       {postStatus === "loading" && <div>Loading...</div>}
       {postStatus === "failed" && <div>Error: {error}</div>}
-      <ForwardCounter />
-      <BackwardCounter />
     </>
   );
 }
