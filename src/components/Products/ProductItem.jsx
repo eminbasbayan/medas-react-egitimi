@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   addProduct,
   removeProduct,
@@ -148,3 +149,13 @@ const ProductItem = (props) => {
 };
 
 export default ProductItem;
+ProductItem.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }),
+  cart: PropTypes.bool,
+};

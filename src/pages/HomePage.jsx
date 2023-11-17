@@ -1,13 +1,10 @@
-import Counter from "../components/Counter";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store/authSlice";
 import { useEffect, useState } from "react";
-import { fetchPosts } from "../store/postSlice";
-import ForwardCounter from "../components/ForwardCounter";
-import BackwardCounter from "../components/BackwardCounter";
+
 import useHttp from "../hooks/use-http";
 function HomePage() {
-  const { isLoading, error, sendRequest } = useHttp();
+  const { error, sendRequest } = useHttp();
   const [posts, setPosts] = useState([]);
   const dispatch = useDispatch();
   const postStatus = useSelector((state) => state.posts.status);
