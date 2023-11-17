@@ -90,12 +90,20 @@ const ProductItem = (props) => {
             ₺{price}
           </span>
           {props.cart ? (
-            <button
-              onClick={removeFromCart}
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 bg-red-500"
-            >
-              Remove from Cart
-            </button>
+            <div>
+              <button
+                onClick={removeFromCart}
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 bg-red-500"
+              >
+                Remove from Cart
+              </button>
+              <br />
+              <div className="flex items-center mt-2">
+                <button className="p-3 bg-green-400">+</button>
+                <b className="mx-2">0</b>
+                <button className="p-3 bg-red-500 text-white text-xl">-</button>
+              </div>
+            </div>
           ) : (
             <button
               onClick={addToCart}
